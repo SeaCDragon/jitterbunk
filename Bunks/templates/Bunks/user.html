@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'Bunks/style.css' %}">
+<h1>{{user.username}}</h1>
+<p>This user has bunked</p>
+<ul>
+    {%for s in sent%}
+        <li><a href="{% url 'Bunks:user' s.to_user.id %}">{{s.to_user.username}}</a></li>
+    {%endfor%}
+</ul>
+
+<p>this user has been bunked by</p>
+<ul>
+    {%for r in received%}
+        <li><a href="{% url 'Bunks:user' r.from_user.id %}">{{r.from_user.username}}</a></li>
+    {%endfor%}
+</ul>

@@ -1,0 +1,20 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'Bunks/style.css' %}">
+<form action="{% url 'Bunks:new' %}" method="post">
+    {% csrf_token %}
+    <label for="sender">who are you?</label>
+    <select name="sender">
+        {% for u in users%}
+            <option value={{u.id}}>{{u.username}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="receiver">who is this for?</label>
+    <select name="receiver">
+        {% for u in users%}
+            <option value={{u.id}}>{{u.username}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <input type="submit" value="Submit">
+</form>

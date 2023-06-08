@@ -1,0 +1,14 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'Bunks/style.css' %}">
+{% if list_of_bunks %}
+    <ul>
+    {% for bunk in list_of_bunks %}
+        <li><a href="{% url 'Bunks:user' bunk.from_user.id %}">{{bunk.from_user.username}}</a> Bunked <a href="{% url 'Bunks:user' bunk.to_user.id %}">{{bunk.to_user.username}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No bunks (sad face)</p>
+{% endif %}
+
+<a href="{% url 'Bunks:new'%}">Bunk someone</a>
+    
